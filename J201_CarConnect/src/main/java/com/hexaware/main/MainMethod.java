@@ -61,7 +61,7 @@ public class MainMethod {
     	int choice;
 
         do {
-            System.out.println("Menu:");
+            System.out.println("*************Menu**************");
             System.out.println("1. Customer");
             System.out.println("2. Vechile");
             System.out.println("3. Reservation");
@@ -74,7 +74,7 @@ public class MainMethod {
                 case 1:
                 	do {
                 		
-                        System.out.println("Menu:");
+                        System.out.println("**************CUSTOMER MENU**************");
                         System.out.println("1. customerdetails through username");
                         System.out.println("2.register customer ");
                         System.out.println("3.update customerd ");
@@ -190,7 +190,7 @@ public class MainMethod {
                 
                 case 2:
                     do {
-                        System.out.println("Menu:");
+                        System.out.println("****************VECHILE MENU********************");
                         System.out.println("1. Register Vehicle");
                         System.out.println("2. Update Vehicle");
                         System.out.println("3. Delete Vehicle");
@@ -313,7 +313,7 @@ public class MainMethod {
                     
                 
                     do {
-                        System.out.println("Menu:");
+                        System.out.println("********************RESERVATION MENU******************");
                         System.out.println("1. Make a reservation");
                         System.out.println("2. View reservations by customer ID");
                         System.out.println("3. Cancel a reservation");
@@ -375,7 +375,7 @@ public class MainMethod {
                                 
                                 System.out.print("Enter Reservation ID to cancel: ");
                                 int reservationId = sc.nextInt();
-                                reservationService.cancelReservation(reservationId);
+                                dao.cancelReservation(reservationId);
                                 System.out.println("Reservation with ID " + reservationId + " canceled successfully.");
                                 break;
                             case 4:
@@ -392,7 +392,7 @@ public class MainMethod {
                 case 4:
                 	Scanner scanner = new Scanner(System.in);
                     
-                    System.out.println("Select an option:");
+                    System.out.println("***********ADMIN MENU*************");
                     System.out.println("1. Get Admin by ID");
                     System.out.println("2. Get Admin by Username");
                     System.out.println("3. Register Admin");
