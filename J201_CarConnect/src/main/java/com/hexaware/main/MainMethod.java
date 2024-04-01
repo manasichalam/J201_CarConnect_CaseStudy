@@ -3,6 +3,7 @@ package com.hexaware.main;
 import java.sql.Date;
 
 
+
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -61,7 +62,7 @@ public class MainMethod {
     	int choice;
 
         do {
-            System.out.println("*************Menu**************");
+            System.out.println("***************Menu**************");
             System.out.println("1. Customer");
             System.out.println("2. Vechile");
             System.out.println("3. Reservation");
@@ -74,7 +75,7 @@ public class MainMethod {
                 case 1:
                 	do {
                 		
-                        System.out.println("**************CUSTOMER MENU**************");
+                        System.out.println("***************CUSTOMER MENU***********************");
                         System.out.println("1. customerdetails through username");
                         System.out.println("2.register customer ");
                         System.out.println("3.update customerd ");
@@ -190,7 +191,7 @@ public class MainMethod {
                 
                 case 2:
                     do {
-                        System.out.println("****************VECHILE MENU********************");
+                        System.out.println("******************* VECHILE MENU******************");
                         System.out.println("1. Register Vehicle");
                         System.out.println("2. Update Vehicle");
                         System.out.println("3. Delete Vehicle");
@@ -201,7 +202,7 @@ public class MainMethod {
                         
                         switch (choice2) {
                             case 1:
-                            	System.out.print("Enter Vehicle ID to update: ");
+                            	System.out.print("Enter Vehicle ID : ");
                                 int vid = sc.nextInt();
                                 System.out.print("Enter Vehicle Model: ");
                                 String model = sc.next();
@@ -313,7 +314,7 @@ public class MainMethod {
                     
                 
                     do {
-                        System.out.println("********************RESERVATION MENU******************");
+                        System.out.println("**************** RESERVATION MENU*************************");
                         System.out.println("1. Make a reservation");
                         System.out.println("2. View reservations by customer ID");
                         System.out.println("3. Cancel a reservation");
@@ -363,7 +364,7 @@ public class MainMethod {
                                 break;
                             case 2:
                                 
-                                System.out.print("Enter Customer ID: ");
+                                System.out.print("Enter reservation ID: ");
                                 int customerId = sc.nextInt();
                                 List<Reservation> reservations =dao.getReservationsByCustomerId(customerId);
                                 System.out.println("Reservations for Customer ID " + customerId + ":");
@@ -392,12 +393,14 @@ public class MainMethod {
                 case 4:
                 	Scanner scanner = new Scanner(System.in);
                     
-                    System.out.println("***********ADMIN MENU*************");
+                    System.out.println("*************** ADMIN MENU****************");
                     System.out.println("1. Get Admin by ID");
                     System.out.println("2. Get Admin by Username");
                     System.out.println("3. Register Admin");
                     System.out.println("4. Update Admin");
                     System.out.println("5. Delete Admin");
+                    System.out.println("6. do customer ops");
+                    System.out.print("Enter your choice: ");
                     
                     int choice1 = scanner.nextInt();
                     
@@ -514,22 +517,258 @@ public class MainMethod {
                             } catch (SQLException e) {
                                 e.printStackTrace();
                             }
+                            
                             break;
-                        default:
-                            System.out.println("Invalid choice. Please select a valid option.");
-                            break;
+                        case 6:
+                        	System.out.println("***********ADMIN OPS**********");
+                        	System.out.println("7.Customer operations");
+                        	System.out.println("8.vechile operations");
+                        	
+                        	System.out.print("Enter your choice: ");
+                            choice = sc.nextInt();
+
+                            switch (choice) {
+                                case 7:
+                                	do {
+                                		
+                                        System.out.println("***************CUSTOMER MENU***********************");
+                                        System.out.println("1. customerdetails through username");
+                                        System.out.println("2.register customer ");
+                                        System.out.println("3.update customerd ");
+                                        System.out.println("4.delete customer");
+                                        System.out.println("5.customerdetails through id");
+                                        System.out.println("6. Exit");
+                                        System.out.print("Enter your choice: ");
+                                        int  choice11 =sc.nextInt();
+                                        switch(choice11) {
+                                        case 1:
+                                        	String username111 = getCustomerusernameFromUserInput();
+                                            Customer user = dao.getCustomerByUsername(username111);
+                                            System.out.println("Customer Information by username is :");
+                                            System.out.println(user);
+                                            break;
+                                        case 2:
+                                            Scanner scanner111 = new Scanner(System.in);
+                                        	
+                                        	
+                                        	System.out.print("Enter Cid: ");
+                                            int cid = scanner111.nextInt();
+                                            customer.setCid(cid);
+                                        	
+                                            
+                                            System.out.print("Enter First Name: ");
+                                            String fName11 = scanner111.nextLine();
+                                            customer.setFName(scanner111.next());
+                                            
+                                            
+                                            
+                                            System.out.print("Enter Last Name: ");
+                                            String lName11 = scanner111.nextLine();
+                                            customer.setLName(sc.next());
+                                            
+                                            System.out.print("Enter Email: ");
+                                           String email11 = scanner111.nextLine();
+                                            customer.setEmail(sc.next());
+                                            
+                                            System.out.print("Enter Phone Number: ");
+                                            String phoneNumber = scanner111.nextLine();
+                                            customer.setPhoneNumber(sc.next());
+                                            System.out.print("Enter Address: ");
+                                            String address = scanner111.nextLine();
+                                            customer.setAddress(sc.next());
+                                            
+                                            System.out.print("Enter Username: ");
+                                            String username1111 = scanner111.nextLine();
+                                            customer.setUsername(sc.next());
+                                            
+                                            System.out.print("Enter Password: ");
+                                            String password11 = scanner111.nextLine();
+                                            customer.setPassword(sc.next());
+                                            
+                                            dao.registerCustomer(customer);
+                                            System.out.println("Customer registered successfully.");
+                                            break;
+                                        	
+                                        case 3:
+                                        	
+                                        	Scanner scanner1111 = new Scanner(System.in);
+                                        	System.out.print("Enter First Name: ");
+                                            String fName111 = scanner1111.nextLine();
+                                            
+                                            System.out.print("Enter Last Name: ");
+                                            String lName111 = scanner1111.nextLine();
+                                            
+                                            System.out.print("Enter Email: ");
+                                            String email111 = scanner1111.nextLine();
+                                            
+                                            System.out.print("Enter Phone Number: ");
+                                            String phoneNumber1 = scanner1111.nextLine();
+                                            
+                                            System.out.print("Enter Address: ");
+                                            String address1 = scanner1111.nextLine();
+                                            
+                                            System.out.print("Enter Username: ");
+                                            String username11111 = scanner1111.nextLine();
+                                            
+                                            System.out.print("Enter Password: ");
+                                            String password111 = scanner1111.nextLine();
+                                            
+                                            System.out.print("Enter Date ");
+                                            String registrationdate = scanner1111.nextLine();
+                                            System.out.print("Enter cid: ");
+                                            int cid1 = scanner1111.nextInt();
+                                            Customer customer1=new Customer(cid1,fName111,lName111,email111, phoneNumber1, address1,username11111,password111,registrationdate);
+                                            dao.updateCustomer(customer1);
+                                            System.out.println("Customer updated successfully.");
+                                            break;
+                                        case 4:
+                                        	Scanner scanner2 = new Scanner(System.in);
+                                        	System.out.print("Enter cid: ");
+                                            int cid2 = scanner2.nextInt();
+                                            
+                                            dao.deleteCustomer(cid2);
+                                            System.out.println("deleted successfully)");
+                                            break;
+                               	
+                                        case 5:
+                                        	Scanner scanner11111 = new Scanner(System.in);
+                                            System.out.print("Enter Customer ID: ");
+                                            int customerId=scanner11111.nextInt();
+                                            Customer customerById = dao.getCustomerById(customerId);
+                                            System.out.println("Customer Information by ID:");
+                                            System.out.println(customerById);
+                                        default:
+                                            System.out.println("Invalid choice. Please try again.");
+                                        }System.out.println("Do you want to continue? (Y/N)");
+                                        ch = sc.next();
+                                        } while (ch.equalsIgnoreCase("Y"));
+                                        System.out.println("Thank you. Visit Again!");
+                                case 8:
+                                    do {
+                                        System.out.println("******************* VECHILE MENU******************");
+                                        System.out.println("1. Register Vehicle");
+                                        System.out.println("2. Update Vehicle");
+                                        System.out.println("3. Delete Vehicle");
+                                        System.out.println("4. View Vehicle Details");
+                                        System.out.println("5. Exit");
+                                        System.out.print("Enter your choice: ");
+                                        int choice2 = sc.nextInt();
+                                        
+                                        switch (choice2) {
+                                            case 1:
+                                            	System.out.print("Enter Vehicle ID : ");
+                                                int vid = sc.nextInt();
+                                                System.out.print("Enter Vehicle Model: ");
+                                                String model = sc.next();
+                                                
+                                                System.out.print("Enter Vehicle manuyeaer: ");
+                                                int type = sc.nextInt();
+                                                
+                                                System.out.print("Enter Vehicle Color: ");
+                                                String color = sc.next();
+                                                
+                                                System.out.print("Enter Vehicle regno: ");
+                                                String regno = sc.nextLine();
+                                                sc.nextLine();
+                                                
+                                                
+                                                System.out.print("Enter Vehicle avail: ");
+                                                boolean avaliability= Boolean.parseBoolean(sc.nextLine());
+                                                
+                                                System.out.print("Enter Vehicle Price: ");
+                                                double price = sc.nextDouble();
+                                                
+                                                Vechile newVehicle1 = new Vechile(vid, model, type, color,regno,avaliability, price);
+                                                dao.addVehicle(newVehicle1);
+                                                System.out.println("Vechile added successfully.");
+                                                break;
+                                            	
+                                            case 2:
+                                             
+                                                System.out.print("Enter Vehicle ID to update: ");
+                                                int updateVehicleId = sc.nextInt();
+                                                System.out.print("Enter Vehicle Model: ");
+                                                String model1 = sc.next();
+                                                
+                                                System.out.print("Enter Vehicle manuyeaer: ");
+                                                int manuyear = sc.nextInt();
+                                                
+                                                System.out.print("Enter Vehicle Color: ");
+                                                String color1 = sc.next();
+                                                
+                                                System.out.print("Enter Vehicle regno: ");
+                                                String regno1 = sc.nextLine();
+                                                sc.nextLine();
+                                                
+                                                System.out.print("Enter Vehicle avail: ");
+                                                boolean avaliability1= sc.nextLine() != null;
+                                                
+                                                System.out.print("Enter Vehicle Price: ");
+                                                double price1 = sc.nextDouble();
+                                                
+                                                Vechile newVehicle = new Vechile(updateVehicleId, model1, manuyear, color1,regno1,avaliability1, price1);
+                                                dao.updateVehicle(newVehicle);
+                                                System.out.println("vechile updated successfully.");
+                                                
+                                                
+                                                
+                                                break;
+                                                
+                                            case 3:
+                                            	Scanner scanner2 = new Scanner(System.in);
+                                            	System.out.print("Enter vid: ");
+                                                int vid2 = scanner2.nextInt();
+                                                
+                                                dao.removeVehicle(vid2);
+                                                System.out.println("deleted successfully)");
+                                                
+                                                break;
+                                                
+                                            case 4:
+                                            	System.out.print("Enter the Vehicle ID to view details: ");
+                                            	Scanner scanner111=new Scanner(System.in);
+                                                int vehicleId = scanner111.nextInt();
+                                                
+                                                try {
+                                                    Vechile vehicle = dao.getVehicleById(vehicleId);
+                                                    
+                                                    if (vehicle != null) {
+                                                        System.out.println("Vehicle Details:");
+                                                        System.out.println("ID: " + vehicle.getVid());
+                                                        System.out.println("Model: " + vehicle.getModel());
+                                                        System.out.println("Manufacture Year: " + vehicle.getManuyear());
+                                                        System.out.println("Color: " + vehicle.getColor());
+                                                        System.out.println("Registration Number: " + vehicle.getRegno());
+                                                        System.out.println("Availability: " + vehicle.isAvailability());
+                                                        System.out.println("Daily Rate: " + vehicle.getDailyRate());
+                                                    } else {
+                                                        System.out.println("Vehicle with ID " + vehicleId + " not found.");
+                                                    }
+                                                } catch (SQLException e) {
+                                                    e.printStackTrace();
+                                                }
+                                                break;
+                                                
+                                            case 5:
+                                                System.out.println("Exiting Vehicle Menu.");
+                                                break;
+                                                default:
+                                                	System.out.println("Invalid choice. Please try again.");
+                                                	}
+                                        System.out.println("Do you want to continue in Vehicle Menu? (Y/N)");
+                                        ch = sc.next();
+                                        } while (ch.equalsIgnoreCase("Y"));
+                                    break;
+                                    } while (ch.equalsIgnoreCase("Y"));
+                                    break;
                     }
-                    break;
-                case 5:
-                    System.out.println("Exiting the application. Goodbye!");
-                    break;
-                default:
+                    default:
                     System.out.println("Invalid choice. Please try again.");
             }
 		System.out.println("Do you want to continue? (Y/N)");
         ch = sc.next();
     } while (ch.equalsIgnoreCase("Y"));
-    System.out.println("Thank you. Visit Again!");
+    System.out.println("***Thank you. Visit Again!****");
     }
     
     
